@@ -1,0 +1,4 @@
+<app-crypto-distributions-listing
+    [items]="requests$ | async"
+    (pagingEvent)="paginateRequests($event)"
+    (filterEvent)="filterByStatus($event)"></app-crypto-distributions-listing>

@@ -1,0 +1,108 @@
+<h2 mat-dialog-title>Crypto Pooling Details</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="custom-table">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+            <mat-label>Pool ID</mat-label>
+          </td>
+          <td>{{data.pool_id}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Total pool investment</mat-label>
+          </td>
+          <td>{{data.total_pool_investment}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Bitcoin pool amount </mat-label>
+          </td>
+          <td>{{data.bitcoin_pool_amount}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Ethereum pool amount</mat-label>
+          </td>
+          <td>{{data.ethereum_pool_amount}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Users portfolios count </mat-label>
+          </td>
+          <td>{{data.users_portfolios_count}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Ethereum value</mat-label>
+          </td>
+          <td>{{data.ethereum_value}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Ethereum coinbase id</mat-label>
+          </td>
+          <td>{{data.eth_coinbase_id}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Ethereum hold days</mat-label>
+          </td>
+          <td>{{data.eth_hold_days}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Ethereum hold until</mat-label>
+          </td>
+          <td>{{data.eth_hold_until}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Bitcoin value</mat-label>
+          </td>
+          <td>{{data.bitcoin_value}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Bitcoin coinbase id</mat-label>
+          </td>
+          <td>{{data.btc_coinbase_id}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Bitcoin hold days</mat-label>
+          </td>
+          <td>{{data.btc_hold_days}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Bitcoin hold until</mat-label>
+          </td>
+          <td>{{data.btc_hold_until}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Ethereum payout</mat-label>
+          </td>
+          <td>{{data.ethereum_payout}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Bitcoin payout</mat-label>
+          </td>
+          <td>{{data.bitcoin_payout}}</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Created at</mat-label>
+          </td>
+          <td>{{data.created_at}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

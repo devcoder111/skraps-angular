@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>Connected Accounts</h2>
+<mat-dialog-content class="mat-typography">
+  <div *ngIf="items else loading">
+
+      <mat-tab-group>
+        <mat-tab label="Bank Accounts">
+
+          <div class="panel__banks">
+            <div class="panel__banks-item" *ngFor="let item of items">
+              <img src="/assets/images/bank.png" alt="">
+              <div class="panel__text panel__text_main">{{ item?.institution }}</div>
+              <div class="panel__text">Linked on: {{ item?.created_at }}</div>
+            </div>
+          </div>
+          <mat-list>
+            <mat-list-item *ngIf="items && items.length == 0">
+              No account connected!
+            </mat-list-item>
+          </mat-list>
+
+        </mat-tab>
+        <mat-tab label="Stripe Cards">
+          
+            <mat-list>
+              <mat-list-item *ngFor="let item of stripeItems">
+                <mat-icon mat-list-icon>credit_card</mat-icon>
+                <h4 mat-line>{{ item?.brand }}</h4>
+                <p mat-line>Last 4: {{ item?.last4 }} &nbsp;&nbsp; Expiry: {{ item?.exp_month }} / {{ item?.exp_year }}</p>
+              </mat-list-item>
+            </mat-list>
+            <mat-list>
+              <mat-list-item *ngIf="!stripeItems">
+                Cards not available!
+              </mat-list-item>
+            </mat-list>
+
+        </mat-tab>
+      </mat-tab-group>
+
+  </div>
+  <ng-template #loading>
+    <div class="bank_connect_spinner" id="bank_connect_spinner">
+      <mat-spinner [diameter]="50" [color]="'accent'"></mat-spinner>
+    </div>
+  </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,22 @@
+.skraps-portfolio-widget { display: block; margin:0;float:left;padding: 0; width: 100%; }
+.skraps-portfolio-widget li { min-height: 320px; display: inline-grid; width:calc(25% - 10px);float:left;margin:0 5px 10px;padding: 20px 0; border-radius: 12px; border: 1px solid #dfdfdf; background-color: #ffffff; overflow: hidden;}
+.port-header { /*border-bottom: 1px solid #dfdfdf;*/ padding: 5px; text-align: center; }
+.port-header img { display: inline-block; }
+.port-header p { color: #183e7a; margin-bottom: 5px; display: block; }
+.port-header span { color: #96b1d4; display: inline; }
+.port-body > p { text-align: center; color: #96b1d4; margin: 10px 0; }
+.port-footer { text-align: center; }
+.mat-raised-button.btn_gray { font-weight: normal; }
+.port-gauge { text-align: center; margin: 10px 0 0 0; display: flex; align-items: center; justify-content: center; }
+.port-header { display:flex; padding:5px 40px;/*width:252px;*/}
+.port-header img { height:25px;width:25px;}
+.port-header > div { flex-basis:calc(100% - 15px);padding-left:15px;text-align:left;width:162px;}
+.port-header > div p { white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+@media screen and (max-width:768px){
+    .skraps-portfolio-widget li { width:calc(50% - 10px);min-height:550px;margin-bottom:10px;}
+}
+
+@media only screen and (max-width: 500px) and (min-width: 300px) {
+    .skraps-portfolio-widget li { width:100% !important;min-height:0;margin:0 0 10px;}
+}

@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>Sell Crypto</h2>
+<mat-dialog-content class="mat-typography">
+
+  <div *ngIf="items else loaded">
+    <!-- <p>Select amount from following list which you want to sell </p> -->
+    <!-- <mat-selection-list #currencies (selectionChange)="optionsSelected($event, currencies.selectedOptions)">
+      <mat-list-item *ngFor="let item of items">
+        <mat-list-option [value]="item?.id" [disabled]="item?.status == 2" [selected]="item?.status == 2">
+          <mat-icon mat-list-icon>
+            <img [src]="item?.coin?.icon" [width]="30" />
+          </mat-icon>
+          <h4 mat-line>{{ item?.coin?.name }}</h4>
+          <p mat-line>
+            {{ item?.value }}
+          </p>
+          <p *ngIf="item?.status == 3" [style.color]="'#eb003e'">Sell request cancelled by admin, try again</p>
+          <p *ngIf="item?.status == 2" [style.color]="'#183e7a'">Submitted to admin for selling</p>
+          <p *ngIf="item?.status == 4" [style.color]="'#155724'">Sold</p>
+        </mat-list-option>
+      </mat-list-item>
+    </mat-selection-list> -->
+
+    <p style="padding: 0 0 0 15px;" *ngIf="items.length == 0">No data available!</p>
+
+    <form [formGroup]="sellForm" novalidate (submit)="submitSelling(sellForm.value)">
+
+      <mat-selection-list #currencies>
+        <mat-list-item *ngFor="let item of items">
+          <mat-icon mat-list-icon>
+            <img [src]="item?.coin?.icon" [width]="30" />
+          </mat-icon>
+          <h4 mat-line>{{ item?.coin?.name }}</h4>
+          <p mat-line>
+            {{ item?.value }}
+          </p>
+          <div mat-line *ngIf="item?.sell_request">
+            <p *ngIf="item?.sell_request?.status == 1" [style.color]="'#183e7a'">Sell request for {{ item?.sell_request?.amount }} {{ item?.coin?.name }},<br/> submitted to admin for selling</p>
+            <p *ngIf="item?.sell_request?.status == 2" [style.color]="'#155724'">Request accepted by admin for selling<br/> {{ item?.sell_request?.amount }} {{ item?.coin?.name }}</p>
+            <p *ngIf="item?.sell_request?.status == 3" [style.color]="'#eb003e'">Sell request for {{ item?.sell_request?.amount }} {{ item?.coin?.name }}<br/> cancelled by admin, try again</p>
+          </div>
+          <mat-list dense >
+            <mat-list-item >
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="{{ item?.coin_id }}" placeholder="Enter {{ item?.coin?.name }} value to sell" title="Enter {{ item?.coin?.name }} value to sell" type="number" size="5">
+              </mat-form-field>
+            </mat-list-item>
+          </mat-list>
+        </mat-list-item>
+      </mat-selection-list>
+
+    </form>
+  </div>
+
+  <ng-template #loaded>
+    <div class="text-center">
+      <mat-spinner class="mat-center" [color]="'accent'" [diameter]="40"></mat-spinner>
+    </div>
+  </ng-template>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button [disabled]="checkData()" (click)="submitSelling(sellForm.value)" cdkFocusInitial>Submit Request to Sell</button>
+</mat-dialog-actions>

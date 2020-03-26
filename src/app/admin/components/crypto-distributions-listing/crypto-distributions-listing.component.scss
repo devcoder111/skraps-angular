@@ -1,0 +1,78 @@
+.table {
+    &_shadow {
+      margin: 20px;
+    }
+
+    .mat-table {
+      min-width: 100%;
+      overflow: auto;
+      mat-footer-row,
+      mat-header-row,
+      mat-row {
+        min-width: 994px;
+      }
+      .cdk-column-dateCreated.mat-column-dateCreated {
+        max-width: 144px;
+      }
+
+      .cdk-column-email.mat-column-email {
+        min-width: 280px;
+      }
+      .cdk-column-legalName.mat-column-legalName {
+        min-width: 280px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .cdk-column-referral_link.mat-column-referral_link {
+        text-align: center;
+        max-width: 100px;
+      }
+      .cdk-column-id.mat-column-id {
+        text-align: center;
+        max-width: 100px;
+      }
+    }
+    .mat-chip-list {
+      display: flex;
+      padding-left: 20px;
+      padding-top: 20px;
+    }
+    .mat-chip {
+      cursor: pointer;
+    }
+  }
+
+  .actions,
+  .th-end {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .ove {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .search-users {
+    display: flex;
+    width: 20%;
+    margin-left: 20px;
+    margin-top: 30px;
+    padding-top: 30px;
+    &__btn {
+      margin-left: 20px;
+      margin-top: 18px;
+    }
+}
+.status-chip { padding: 5px 8px; border-radius: 100px; }
+.status-chip.pending { background-color: #fff3cd; border-color: #ffeeba; color: #856404; }
+.status-chip.accepted { background-color: #d1ecf1; border-color: #bee5eb; color: #0c5460; }
+.status-chip.declined { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; }
+.status-chip.sold { color: #155724; background-color: #d4edda; border-color: #c3e6cb; }
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell{vertical-align: middle;}
+td.mat-cell > img{position: relative;top:4px;}
+.spinner{ display: flex; align-items: center; justify-content: center; padding: 50px 0; }
+.no_data { padding: 10px 25px; }
+.hash_value{overflow-x: auto;max-width: 240px;}

@@ -1,0 +1,51 @@
+<div *ngIf="transactions else loader">
+<div *ngIf="transactions?.data.length else notransaction">
+<div class="col-12" *ngFor="let transaction of transactions.data">
+    <div class="row">
+      <div class="wallet-transaction">
+          <div class="price">
+            <span>
+              <img src="{{coinData?.icon}}" alt="icon" />
+            </span>
+            {{ transaction?.value }}
+          </div>
+          <div class="address">
+             <strong>Address :</strong>  {{ transaction?.address }}
+          </div>
+          <div class="hash">
+             <strong>Hash :</strong> {{ transaction?.hash }}
+          </div>
+          <div class="trans-date">
+              {{ transaction?.created_at | date: 'dd/MM/yyyy' }}
+          </div>
+      </div>
+     </div>
+  </div>
+  <br />
+  </div>
+  <ng-template #notransaction>
+      <div class="no-balance-wrapper">
+          <svg height="130" width="130" role="img" class="no_balance_dollar" size="130"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
+            <g fill="none" fill-rule="evenodd">
+              <circle cx="19" cy="19" r="19"></circle>
+              <path
+                d="M19.8 7.125h-1.49v1.831c-3.093.3-5.966 2.378-5.966 5.63 0 3.608 2.734 4.756 5.828 5.603l.138.027v5.767c-1.52-.137-3.038-.793-3.922-2.023l-2.513 2.542c1.685 1.75 4.032 2.46 6.435 2.433v1.94h1.49v-1.968c3.508-.355 6.325-2.378 6.325-5.985 0-3.744-3.12-4.728-6.214-5.548l-.11-.027V11.88c1.27 0 2.513.574 3.37 1.476l2.291-2.541c-1.408-1.23-3.535-1.886-5.413-1.886h-.248V7.125zm-1.49 9.812c-1.326-.574-2.486-.848-2.486-2.515 0-1.394 1.188-2.268 2.486-2.487v5.002zm1.49 3.716c1.299.438 2.845.902 2.845 2.515 0 1.612-1.325 2.514-2.844 2.815v-5.33z">
+              </path>
+            </g>
+          </svg>
+          <h3 class="no-balance-heading">No sent transactions</h3>
+          <p class="no-balance-text">
+            Looks like there isn't any USD in your account yet. Skraps is the easiest
+            place to get started.
+            <br/>
+            <button class="form__btn form__btn_multiple btn mat-elevation-z0 mat-raised-button mat-accent" disabled>Add Funds</button>
+          </p>
+        </div>
+  </ng-template>
+</div>
+<ng-template #loader>
+    <div class="loader-container">
+        <mat-spinner class="mat-center" [color]="'accent'" [diameter]="40"></mat-spinner>
+      </div>
+</ng-template>

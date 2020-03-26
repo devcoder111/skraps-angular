@@ -1,0 +1,185 @@
+.cnt {
+    background-color: #f8fafb;
+    overflow: hidden;
+    min-height: calc(100vh - 181px);
+}
+.wrap {
+    width: 1060px;
+}
+.title {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+}
+.wallet-page {
+    padding-top: 37px;
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 30px;
+    &:last-child {
+        margin-bottom: 80px;
+    }
+    &__item {
+        overflow: hidden;
+        flex-shrink: 0;
+        flex-basis: 50%;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: block;
+        min-width: 250px;
+    }
+}
+
+.panel__header {
+    border-bottom: 1px solid #dfdfdf;
+    min-height: 70px;
+    padding: 12px 40px 11px;
+}
+.wallet_widget {
+    width: 100%;
+    height: 452px;
+    border: 1px solid rgb(236, 239, 241);
+    margin: 20px 0;
+}
+.wallet_currencies {
+    width: 30%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 450px;
+    // display: inline-block;
+    float: left;
+}
+.currency_info {
+    width: 70%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 450px;
+    display: inline-block;
+}
+.currencies_list { display: block; margin: 0; padding: 0; }
+.currencies_list li { display: block; margin: 0; padding: 0; border-bottom: 1px solid rgb(236, 239, 241); cursor: pointer; }
+.currencies_list li:last-child { border-bottom: none; }
+.currencies_list li a { display: block; padding: 12px 8px; text-decoration: none; color: rgb(5, 15, 25); }
+.currency_info { border-left: 1px solid rgb(236, 239, 241); }
+.no_balance_dollar {
+    opacity: 0.3;
+    //background-color: rgb(22, 82, 240);
+    background-image: linear-gradient(to top, #036da1 0%, #183e7a 100%);
+    border-radius: 50%;
+}
+.no_balance_dollar path {
+    fill: rgb(255, 255, 255);
+}
+.no_balance { text-align: center; }
+.no-balance-heading { font-weight: 400; color: rgb(5, 15, 25); text-align: center; font-size: 24px; margin: 30px 0px 30px;}
+.no-balance-text { display: inline-block;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400; line-height: 1.5; font-size: 16px; color: rgb(5, 15, 25); text-align: center; word-break: break-word; }
+.no-balance-wrapper { text-align: center; width: 250px; display: inline-block; margin-top: 7%; }
+
+.collection {
+    // margin: .5rem 0 1rem 0;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+.collection .collection-item.avatar {
+    min-height: 84px;
+    padding-left: 72px;
+    position: relative;
+}
+.collection .collection-item {
+    background-color: #fff;
+    line-height: 1.5rem;
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+ul:not(.browser-default)>li {
+    list-style-type: none;
+}
+.collection .collection-item.avatar:not(.circle-clipper)>.circle, .collection .collection-item.avatar :not(.circle-clipper)>.circle {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.circle {
+    border-radius: 50%;
+}
+.collection .collection-item.avatar .title {
+    font-size: 16px;
+}
+.collection .collection-item.avatar p {
+    margin: 0;
+}
+.collection .collection-item.avatar .secondary-content {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+.secondary-content {
+    float: right;
+    color: #26a69a;
+}
+.collection-item .title { padding: 0; }
+.btn-custom {
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 5px;
+}
+.collection-item.active { border-left: 3px solid #eb003e; }
+
+// balance input CSS
+.Balance-block{text-align: left;padding: 30px 60px;}
+.Balance-block label{ display: block;}
+.Balance-block .heading{ font-size: 20px; padding: 20px 0; color: #5d5d5d;}
+.Balance-block .box-input{width: 100%;margin-bottom: 20px;height: 50px;border-radius: 8px;border: 1px solid #e4e4e4;box-shadow: 1px 0px 8px 4px #f1f1f1;padding: 10px;font-size: 16px;}
+.Balance-block input{ width:100%;}
+.Balance-block .bottom-line{ font-size: 16px; height: 42px; border:none; border-bottom:1px solid #ccc;}
+.Balance-block .bottom-line.active{ color: #26a69a; border-bottom:2px solid #26a69a;}
+.Balance-block label.active{ color: #26a69a}
+.Balance-block .form-group{ position: relative;}
+.Balance-block .label-position{ position: absolute; right: 10px; top:14px; color: #898989;}
+.Balance-block .text-center{ text-align: center;}
+.Balance-block .btn-custom{ margin-top: 30px; padding: 0px 26px;}
+.Balance-block input:focus{outline-offset: 0; outline: none;}
+.Balance-block .brdr-none{ border-bottom:none;}
+
+// Confirmation input CSS
+.conformation-block{text-align: left;padding: 30px 60px;}
+.conformation-block .heading{ font-size: 26px; padding: 20px 0; color: #5d5d5d;}
+.conformation-block .box-input{width: 100%;margin-bottom: 20px;margin:2px 40px;height: 50px;border-radius: 8px;border: 2px solid #e4e4e4;padding: 10px;font-size: 16px;}
+.conformation-block .addr{ margin: 40px 0 8px 40px;color: #6d6d6d;}
+.conformation-block .payment-option{max-width: 500px;margin: 10px auto;text-align: left; color: #4a4a4a;    display: flex;
+    white-space: nowrap;}
+    .conformation-block .payment-option span {
+        min-width: 100px;
+    }
+.conformation-block .text-center{ text-align: center; margin-top: 30px;}
+.conformation-block .float-right{ float: right;width:70%}
+.conformation-block .brder-tp{ border-top:2px solid #ccc; padding-top: 10px; clear: both;}
+.conformation-block .btn-cancel{background-color: transparent;padding: 7px 15px;border: 1px solid #1dc5bf;color: #5d5d5d;font-weight: 500;}
+
+.final-block{margin: 80px 0;}
+.final-block p{margin: 20px 0 140px 0;color: #6d6d6d;}
+.final-block img{width: 80px;}
+.disable-input{background: #ffffff}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.currency_info{position: relative;}
+.loader-container {position:absolute;top: 50%;left: 50%;transform: translate(-50%, -50%)}

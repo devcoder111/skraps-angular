@@ -1,0 +1,134 @@
+<div class="cnt">
+  <div class="wrap">
+    <div class="wallet-page">
+      <h1 class="title title_mb">Wallet</h1>
+
+      <div _ngcontent-c12="" class="panel">
+        <div _ngcontent-c12="" class="panel__header panel__header_perform">
+
+          <div mat-tab-nav-bar [disableRipple]="true" [color]="'accent'" class="main-menu main-menu_ico">
+            <ng-container>
+              <a mat-tab-link [active]="true"> Wallet </a>
+              <!-- <a mat-tab-link> Buy / Sell </a> -->
+            </ng-container>
+          </div>
+
+          <div class="wallet_widget">
+            <div class="wallet_currencies">
+              <ul class="currencies_list collection" *ngIf="list.length > 0">
+                <li class="collection-item avatar" *ngFor="let currency of list; let i = index" [ngClass]="{'active': i == activeCurrencyIndex}" (click)="updateTab(i)">
+                  <img src="{{ currency.icon }}" alt="" class="circle">
+                  <span class="title">{{ currency.name }}</span>
+                  <p>
+                    ${{ currency?.crypto?.balance }}<br />
+                    <button class="btn-custom mat-raised-button mat-accent" (click)="sendCurrency(currency);$event.stopPropagation()">Send</button>
+                    <button class="btn-custom mat-raised-button mat-accent" (click)="openDialog(currency)">Keys</button>
+                  </p>
+                </li>
+              </ul>
+              <ul class="currencies_list collection" *ngIf="list.length == 0">
+                <li class="collection-item">
+                  <p>Loading crypto currencies...</p>
+                </li>
+              </ul>
+            </div>
+            <div class="currency_info">
+              <div class="no_balance">
+                <div *ngIf="!show || show == 'listing'">
+                  <app-wallet-transactions
+                    [transactions]="transactions$ | async"  [coinData]="coinData"
+                  ></app-wallet-transactions>
+                </div>
+                <div class="Balance-block" *ngIf="!show || show == 'form'">
+                    <!-- <div *ngIf="currentValue else formloader"> -->
+                    <form [formGroup]="sendCryptoForm" (submit) = "onSendCryptoFormSubmit(sendCryptoForm.value)">
+                      <div class="form-group">
+                        <label class="heading">Current Balance: ${{ currencyData?.crypto?.balance }} | {{ currencyData?.crypto?.dollar_value }} {{ currencyData?.crypto?.coin_code }}</label>
+                        <input type="text" class="box-input" name="password"  placeholder="Enter {{ currencyData.name }} Address"  formControlName="address"  #address />
+                          <div class="form-group invalid-feedback" *ngIf="address?.errors && (address?.dirty || address?.touched)">
+                            <div *ngIf="address?.errors.required">Address is required</div>
+                            <div  *ngIf="address?.errors.maxlength">Address must be max 30 characters</div>
+                          </div>
+                      </div>
+                      <p>Enter Amount</p>
+                      <div class="form-group">
+                        <input (keyup)="onInputChange($event.target.value )" class="bottom-line active" type="number" name="amount" placeholder="0.005"  formControlName="amount"  #amount />
+                        <label class="label-position active">{{ cointype }}</label>
+                        <div class="form-group invalid-feedback" *ngIf="amount?.errors && (amount?.dirty || amount?.touched)">
+                          <div *ngIf="amount?.errors.required">Address is required</div>
+                          <div  *ngIf="amount?.errors.maxlength">Address must be max 15 characters</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input class="bottom-line brdr-none disable-input" disabled value=${{btcValue}} type="text" name="" placeholder="$49.05" />
+                        <div><label class="label-position">USD</label></div>
+                        <!-- <ng-template #nodata>
+                            <label class="label-position">Loading...</label>
+                        </ng-template> -->
+                        <div class="text-center">
+                          <button class="btn-custom mat-raised-button mat-accent" type="submit" [disabled]="sendCryptoForm.status != 'VALID'" value = "submit">Send</button>
+                        </div>
+                      </div>
+                    </form>
+                  <!-- </div>
+                  <ng-template #formloader>
+                      <div class="loader-container">
+                          <mat-spinner class="mat-center" [color]="'accent'" [diameter]="40"></mat-spinner>
+                        </div>
+                  </ng-template> -->
+                </div>
+
+                 <div class="conformation-block" *ngIf="!show || show == 'confirm'">
+                  <div *ngIf="formData else loader">
+                    <div class="form-group">
+                          <label class="heading">Confirmation</label>
+                          <p class="addr">{{formData?.type}} Address</p>
+                          <input type="text" disabled class="box-input" value="{{formData?.address}}" placeholder="hfjdyfuhndvshdgshdsjbjsb" />
+                      </div>
+                      <div class="text-center">
+                      <div style="display:inline-block">
+                        <p class="payment-option">
+                          <span>Amount</span>
+                          <span class="float-right">{{formData?.amtTotal}} {{formData?.cointType}}</span>
+                        </p>
+                        <p class="payment-option">
+                            <span>Fee</span>
+                            <span class="float-right">{{formData?.fee}} {{formData?.cointType}}</span>
+                          </p>
+                        <p class="payment-option brder-tp">
+                            <span>Total</span>
+                            <span class="float-right">{{formData?.amount}} {{formData?.cointType}}</span>
+                        </p>
+                      </div>
+                    </div>
+                      <div class="text-center">
+                          <button class="btn-custom btn-cancel" (click)="cancelTransaction()">Cancel</button>
+                          <button class="btn-custom mat-raised-button mat-accent" [disabled]="formData.isDisabled" (click)="onSubmit()">Send</button>
+                        </div>
+                  </div>
+                  <ng-template #loader>
+                      <div class="loader-container">
+                          <mat-spinner class="mat-center" [color]="'accent'" [diameter]="40"></mat-spinner>
+                        </div>
+                  </ng-template>
+                </div>
+                <div class="text-center final-block" *ngIf="!show || show == 'sent'">
+                  <i class="fa fa-check-circle"></i>
+                  <img class="coin-img" src="/assets/images/success.svg" alt="" />
+                  <p>{{formData.type}} Sent</p>
+                </div>
+                <div class="text-center" *ngIf="!show || show == 'sent'">
+                    <button class="btn-custom mat-raised-button mat-accent" (click)="cancelTransaction()" >Home</button>
+                  </div>
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

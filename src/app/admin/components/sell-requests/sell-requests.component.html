@@ -1,0 +1,4 @@
+<app-sell-requests-listing 
+    [items]="requests$ | async"
+    (pagingEvent)="paginateRequests($event)"
+    (filterEvent)="filterByStatus($event)"></app-sell-requests-listing>

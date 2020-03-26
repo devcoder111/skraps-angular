@@ -1,0 +1,26 @@
+.text-center {
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+
+.mat-dialog-content {
+    padding: 10px;
+}
+
+.mat-center {
+    margin: 0 auto;
+}
+
+.mat-list .mat-list-item,
+.mat-list .mat-list-option,
+.mat-nav-list .mat-list-item,
+.mat-nav-list .mat-list-option,
+.mat-selection-list .mat-list-item,
+.mat-selection-list .mat-list-option {
+    height: auto !important;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+    width: 220px !important;
+}

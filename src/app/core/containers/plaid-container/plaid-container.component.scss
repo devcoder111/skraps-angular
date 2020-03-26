@@ -1,0 +1,19 @@
+:host(:not(.from-register-page)) {
+  display: block;
+  width: calc(50% - 10px);
+  height: 727px;
+}
+:host(.from-register-page) {
+  display: block;
+  width: 100%;
+}
+.field-system {
+  width: 100%;
+}
+@media screen and (max-width: 991px) {
+  :host(:not(.from-register-page)) {
+    width: 100%;
+    height: auto;
+  }
+}
+.plaid_label { display: block; width: 100%; border-bottom: 1px solid #ccc; padding: 0 0 15px 0; }

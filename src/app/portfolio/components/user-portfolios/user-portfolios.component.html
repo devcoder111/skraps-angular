@@ -1,0 +1,50 @@
+<owl-carousel-o [options]="customOptions">
+
+  <ul class="skraps-portfolio-widget">
+
+    <li *ngFor="let user of users; let i=index">
+      <ng-template carouselSlide>
+        <div class="port-header">
+          <img [src]="user?.profile?.avatar" width="25" alt="" />
+          <div class="">
+            <p>{{ user?.name }}</p>
+            <span>ROI: {{ user?.risk }}%</span>
+          </div>
+        </div>
+        <div class="port-body">
+          <div class="port-gauge">
+
+            <app-doughnut-chart
+              [ngClass]="{'is-panel': isPanel, 'is-rich': true}"
+              [isAdd]="isAdd"
+              [isLock]="isLock"
+              (OnDeactivate)="onDeactivate($event)"
+              (OnActivate)="onActivate($event, i)"
+              [results]="user.active_portfolio.options"
+              [activeIndex]="activeIndex"
+            ></app-doughnut-chart>
+
+            <!-- <ngx-gauge [value]="user?.risk" [min]="0" [max]="5" [size]="150" [cap]="butt" [thick]="7" [animate]="'true'"
+              [type]="'arch'">
+              <ngx-gauge-append>
+              </ngx-gauge-append>
+              <ngx-gauge-label></ngx-gauge-label>
+              <ngx-gauge-prepend>
+                {{ user?.risk }}%
+              </ngx-gauge-prepend>
+              <ngx-gauge-value></ngx-gauge-value>
+            </ngx-gauge> -->
+          </div>
+        </div>
+        <div class="port-footer">
+          <button class="btn_gray mat-raised-button mat-elevation-z0"
+            (click)="selectedPortfolio.emit(user.active_portfolio)" type="button">
+            <span class="mat-button-wrapper">Copy Portfolio</span>
+          </button>
+        </div>
+      </ng-template>
+    </li>
+
+  </ul>
+
+</owl-carousel-o>

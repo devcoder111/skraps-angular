@@ -1,0 +1,6 @@
+:host {
+    display: block;
+    width: 100%;
+}
+.bank_connect_spinner { display: flex; align-items: center; justify-content: center; margin: 10px 0; }
+.bank_connect_spinner.hide { display: none; }

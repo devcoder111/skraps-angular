@@ -1,0 +1,29 @@
+<div class="panel">
+  <div class="panel__header">
+    <h2 class="panel__title">Investment Pool</h2>
+  </div>
+  <div class="panel__body panel__body_single panel__body_fs form">
+    
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Currency</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Portfolio</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items?.data">
+          <td>
+            <img [width]="20" [src]="item?.coin?.icon" /> {{ item?.coin?.name }}
+          </td>
+          <td>${{ item?.investment_amount }}</td>
+          <td>{{ item?.portfolio?.package_name }}</td>
+          <td>{{ item?.created_at }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

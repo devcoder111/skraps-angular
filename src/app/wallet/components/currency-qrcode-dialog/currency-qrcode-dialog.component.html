@@ -1,0 +1,41 @@
+<!-- <h2 mat-dialog-title>
+  {{ currency?.name }}
+</h2> -->
+
+<mat-dialog-content class="dialog-content">
+  <div *ngIf="currency">
+    <div *ngIf="currency.crypto.address && currency.crypto.address != ''">
+      <img src="{{ currency?.icon }}" width="50" height="50" alt="{{ currency?.name }}" title="{{ currency?.name }}" /><br />
+      <p>Currency address.</p>
+      <p class="currency_address">
+        <a (click)="copyAddress(currency.crypto.address)" title="Click to copy">
+          {{ currency?.crypto?.address }} &nbsp;
+          <button class="btn-custom mat-raised-button mat-accent pad-less">Copy</button>
+        </a>
+      </p>
+      <p>Private key.</p>
+      <p class="currency_address">
+        <a (click)="copyKeys(currency.crypto.private_key)" title="Click to copy">
+          {{ currency?.crypto?.private_key }} &nbsp;
+          <button class="btn-custom mat-raised-button mat-accent pad-less">Copy</button>
+        </a>
+      </p>
+      <p *ngIf="currency.crypto.public_key">Public key.</p>
+      <p class="currency_address" *ngIf="currency.crypto.public_key">
+          <a (click)="copyKeys(currency.crypto.public_key)" title="Click to copy">
+            {{ currency?.crypto?.public_key }} &nbsp;
+            <button class="btn-custom mat-raised-button mat-accent pad-less">Copy</button>
+          </a>
+        </p>
+      <!-- <p>Following is the QR Code for your address.</p>
+      <img src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl={{ currency?.crypto?.address }}" /> -->
+    </div>
+    <div *ngIf="!currency.crypto.address || currency.crypto.address == ''">
+      <p>Address info not available!</p>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" [mat-dialog-close]="true">Close</button>
+</mat-dialog-actions>

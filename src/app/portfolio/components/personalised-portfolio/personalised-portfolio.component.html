@@ -1,0 +1,102 @@
+<ul class="personalised-listing">
+  <li class="risk-score">
+    <div class="pp-risk-score">
+      <h2>Your Risk Score</h2>
+      <div class="pprs-inner">
+        <!-- <ngx-gauge [value]="portfolio?.risk" [min]="0" [max]="5" [size]="130" 
+          [thick]="7" [animate]="'true'" [type]="'arch'">
+          <ngx-gauge-append></ngx-gauge-append>
+          <ngx-gauge-label>
+            <span class="badge">{{ portfolio?.risk }}</span>
+          </ngx-gauge-label>
+          <ngx-gauge-prepend></ngx-gauge-prepend>
+          <ngx-gauge-value></ngx-gauge-value>
+        </ngx-gauge> -->
+
+        <app-custom-gauge [count]="portfolio?.risk" *ngIf="portfolio"></app-custom-gauge>
+
+        <p>Don't think your risk score is right? Take the test again!</p>
+        <a [routerLink]="['/quiz/progress']">
+          <button class="btn_gray mat-raised-button mat-elevation-z0" type="button">
+            <span class="mat-button-wrapper">Test again!</span>
+          </button>
+        </a>
+      </div>
+    </div>
+  </li>
+  <li class="breakdown">
+    <mat-tab-group>
+      <mat-tab label="Suggested Portfolio">
+
+        <div class="pp-breakdown-inner">
+          <h4 class="p_portfolio_type">{{ portfolio?.active_portfolio?.package_name }}</h4>
+          <span class="badge">{{ portfolio?.active_portfolio?.risk_name }}</span>
+          <div class="cr-pu-wrap">
+            <div class="crpu-inner cr-wrap">
+              <small class="small_text">Current Roi</small>
+              <h3 class="p_metrics" *ngIf="portfolio">{{ portfolio?.active_portfolio?.risk_value }}%</h3>
+              <h3 class="p_metrics" *ngIf="!portfolio">-</h3>
+            </div>
+            <div class="crpu-inner pu-wrap">
+              <small class="small_text">Portfolio Users</small>
+              <h3 class="p_metrics" *ngIf="portfolio">{{ portfolio?.package_users }}</h3>
+              <h3 class="p_metrics" *ngIf="!portfolio">-</h3>
+            </div>
+          </div>
+          <div class="seprator"></div>
+          <button class="btn" mat-raised-button="" tabindex="0"
+            (click)="selectedPortfolio.emit(portfolio.active_portfolio)">
+            Use Portfolio
+          </button>
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Portfolio Breakdown">
+
+        <div class="pp-breakdown-inner">
+          <h4>{{ portfolio?.active_portfolio?.package_name }}</h4>
+          <div class="coin-list-container">
+            <div class="coin-list">
+              <div class="coin-list__item" *ngFor="let option of portfolio?.active_portfolio?.options">
+                <div class="coin-list__img">
+                  <img [src]="option.icon" alt="" />
+                </div>
+                <div class="coin-list__name">{{ option?.name }}</div>
+                <div class="coin-list__val">
+                  {{ option?.value }}%
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </mat-tab>
+    </mat-tab-group>
+
+    <!-- <div mat-tab-nav-bar [disableRipple]="true" [color]="'accent'" class="main-menu main-menu_ico">
+      <ng-container>
+        <a mat-tab-link [active]="true">Suggested Portfolio</a>
+        <a mat-tab-link [active]="true">Portfolio Breakdown</a>
+      </ng-container>
+    </div> -->
+    <!-- <div class="pp-breakdown-inner">
+      <h4>{{ portfolio?.active_portfolio?.package_name }}</h4>
+      <span class="badge">{{ portfolio?.active_portfolio?.risk_name }}</span>
+      <div class="cr-pu-wrap">
+        <div class="crpu-inner cr-wrap">
+          <small>Current Roi</small>
+          <h3>{{ portfolio?.active_portfolio?.risk_value }}%</h3>
+        </div>
+        <div class="crpu-inner pu-wrap">
+          <small>Portfolio Users</small>
+          <h3>{{ portfolio?.package_users }}</h3>
+        </div>
+      </div>
+      <div class="seprator"></div>
+      <button class="btn" mat-raised-button="" tabindex="0" (click)="selectedPortfolio.emit(portfolio.active_portfolio)">
+        Use Portfolio
+      </button>
+    </div> -->
+  </li>
+</ul>

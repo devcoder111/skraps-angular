@@ -1,0 +1,101 @@
+<div [ngClass]="{'mat-elevation-z2': shadow, 'table': true, 'table_shadow': shadow}">
+
+  <div *ngIf="items else loaded">
+
+    <form class="search-users">
+      <!-- <h4>Filter by Request Status</h4> -->
+      <mat-form-field>
+        <mat-label>Filter by Request Status</mat-label>
+        <mat-select [(value)]="filterBy" (selectionChange)="filterRequests()">
+          <mat-option *ngFor="let item of status" [value]="item?.value">
+            {{ item?.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+    <table mat-table [dataSource]="items?.data" class="">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- User Name Column -->
+      <ng-container matColumnDef="User Name">
+        <th mat-header-cell *matHeaderCellDef> User Name </th>
+        <td mat-cell *matCellDef="let element"> {{ element?.user?.name }} </td>
+      </ng-container>
+
+      <!-- Coin Column -->
+      <ng-container matColumnDef="Coin">
+        <th mat-header-cell *matHeaderCellDef> Coin </th>
+        <td mat-cell *matCellDef="let element"> 
+          <img [src]="element?.coin?.icon" [width]="20" />
+          {{ element?.coin?.name }}
+        </td>
+      </ng-container>
+
+      <!-- Amount Column -->
+      <ng-container matColumnDef="Amount">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let element"> {{ element?.amount }} </td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="Status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> 
+          <span class="status-chip pending" *ngIf="element?.status == 1">Pending</span>
+          <span class="status-chip accepted" *ngIf="element?.status == 2">Accepted</span>
+          <span class="status-chip declined" *ngIf="element?.status == 3">Declined</span>
+          <span class="status-chip sold" *ngIf="element?.status == 4">Sold</span>
+        </td>
+      </ng-container>
+
+      <!-- Created On Column -->
+      <ng-container matColumnDef="Created On">
+        <th mat-header-cell *matHeaderCellDef> Created On </th>
+        <td mat-cell *matCellDef="let element"> {{ element?.created_at }} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          
+          <ng-container *ngIf="element?.status == 1">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Action on sell request">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item *ngFor="let item of changeStatusTo" (click)="changeStatus(item?.value, element?.id, pageEvent)">
+                <mat-icon>{{ item?.icon }}</mat-icon>
+                <span>{{ item?.label }}</span>
+              </button>
+            </mat-menu>
+          </ng-container>
+          
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <p class="no_data" *ngIf="items?.data?.length == 0">No data available!</p>
+
+    <mat-paginator [length]="items?.meta?.total"
+                  [pageSize]="items?.meta?.per_page"
+                  [pageSizeOptions]="[5, 10, 25, 100]"
+                  [pageIndex]="items?.meta?.current_page - 1"
+                  (page)="pageEvent = $event; paginate($event)">
+    </mat-paginator>
+
+  </div>
+
+  <ng-template #loaded>
+    <div class="spinner">
+      <mat-spinner class="mat-center" [color]="'accent'" [diameter]="40"></mat-spinner>
+    </div>
+  </ng-template>
+
+</div>

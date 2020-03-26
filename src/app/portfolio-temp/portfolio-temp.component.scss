@@ -1,0 +1,185 @@
+.cnt {
+    background-color: #f8fafb;
+    overflow: hidden;
+    min-height: calc(100vh - 181px);
+}
+
+.wrap {
+    width: 1060px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    background: #f9fafc;
+    height: fit-content;
+}
+
+.create-title {
+    padding: 2% 0 2% 0;
+    color: #173C78;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.main-content {
+    width: 1060px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    height: 570px;
+}
+
+.choose-coin {
+    background: white;
+    margin-right: 2%;
+    width: 50%;
+    border: 2px solid #ededed;
+    border-radius: 8px;
+    height: -webkit-fill-available;
+}
+
+.coinDescription {
+    margin: auto;
+    padding-left: 10px;
+}
+
+.coin-width {
+    width: 337px;
+}
+
+.displayflex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.coin-percent {
+    margin-top: 5px;
+}
+
+.hasgreen {
+    color: green !important;
+}
+
+.choose-coint-title {
+    border-bottom: 2px solid #ededed;
+    padding: 33px 26px 18px 30px;
+    color: #173C78;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.bit-coins-list-containe {
+    display: flex;
+    justify-content: center;
+    padding-top: 47px;
+    padding-bottom: 47px;
+}
+
+.meme {
+    display: flex;
+    flex-direction: column;
+    // padding-top: 47px;
+    padding-bottom: 47px;
+    align-items: center;
+}
+
+.separatore-values {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.chart-container {
+    background: white;
+    margin-right: 2%;
+    width: 50%;
+    border: 1px solid #ededed;
+    border-radius: 5px;
+    padding: 23px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.grey-color {
+    color: #737373;
+}
+
+.button-continue {
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    background: red;
+    color: white;
+    width: -webkit-fill-available;
+    margin-top: 10px;
+}
+
+.aligin-center {
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    margin-top: 31px;
+}
+
+ngx-charts-advanced-pie-chart div:first-child {
+    width: unset;
+    height: unset;
+    justify-content: center;
+    display: flex;
+}
+
+.icons-col {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    justify-content: space-evenly;
+}
+
+.img-co {
+    width: 64px;
+    height: 64px;
+}
+
+.profoli-name {
+    outline: none;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+    /* margin: 10px; */
+    border-radius: 7px;
+    font-size: 20px;
+    width: 100%;
+}
+
+.name-oir {
+    padding-bottom: 10px;
+}
+
+::slotted(.advanced-pie) {
+    display: block !important;
+    margin: auto;
+    text-align: center;
+}
+
+ngx-charts-advanced-pie-chart:first-of-type {
+    width: auto !important;
+    display: flex;
+    justify-content: center;
+}
+
+ngx-charts-advanced-pie-chart {
+     ::ng-deep {
+        .advanced-pie-legend-wrapper {
+            display: none;
+        }
+    }
+}

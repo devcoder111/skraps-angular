@@ -1,0 +1,4 @@
+<app-crypto-pollings-listing
+    [items]="requests$ | async"
+    (pagingEvent)="paginateRequests($event)"
+    (filterEvent)="filterByStatus($event)"></app-crypto-pollings-listing>

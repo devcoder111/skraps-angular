@@ -1,0 +1,59 @@
+<owl-carousel-o [options]="customOptions">
+
+  <ul class="skraps-portfolio-widget">
+    <li *ngFor="let portfolio of portfolioList; let i=index">
+      <ng-template carouselSlide>
+        <div class="port-header">
+          <p>{{ portfolio?.package_name }}</p>
+          <span>{{ portfolio?.risk_name }}</span>
+        </div>
+        <div class="port-body">
+          <p>Risk Score: {{ portfolio?.risk_value }}</p>
+
+          <div class="port-gauge">
+
+              <app-doughnut-chart
+                [ngClass]="{'is-panel': isPanel, 'is-rich': true}"
+                [isAdd]="isAdd"
+                [isLock]="isLock"
+                (OnDeactivate)="onDeactivate($event)"
+                (OnActivate)="onActivate($event, i)"
+                [results]="portfolio.options"
+                [activeIndex]="activeIndex"
+              ></app-doughnut-chart>
+
+            <!-- <ngx-gauge [value]="portfolio?.risk_value" [min]="0" [max]="5" [size]="130" [cap]="butt" [thick]="7"
+              [animate]="'true'" [type]="'arch'">
+              <ngx-gauge-append>
+                {{ portfolio?.risk_value }}
+              </ngx-gauge-append>
+              <ngx-gauge-label></ngx-gauge-label>
+              <ngx-gauge-prepend></ngx-gauge-prepend>
+              <ngx-gauge-value></ngx-gauge-value>
+            </ngx-gauge> -->
+          </div>
+
+          <div class="coin-list">
+            <div class="coin-list__item" *ngFor="let option of portfolio.options">
+              <div class="coin-list__img">
+                <img [src]="option.icon" alt="" />
+              </div>
+              <div class="coin-list__name">{{ option?.name }}</div>
+              <div class="coin-list__val">
+                {{ option?.value }}%
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="port-footer">
+          <button class="btn_gray mat-raised-button mat-elevation-z0" type="button"
+            (click)="selectedPortfolio.emit(portfolio)">
+            <span class="mat-button-wrapper">Copy Portfolio</span>
+          </button>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+
+</owl-carousel-o>
+<p class="loading-portfolios" *ngIf="portfolioList.length == 0">Loading...</p>

@@ -1,0 +1,23 @@
+.no_balance_dollar {
+    opacity: 0.3;
+    //background-color: rgb(22, 82, 240);
+    background-image: linear-gradient(to top, #036da1 0%, #183e7a 100%);
+    border-radius: 50%;
+}
+.no_balance_dollar path {
+    fill: rgb(255, 255, 255);
+}
+.no_balance { text-align: center; }
+.no-balance-heading { font-weight: 400; color: rgb(5, 15, 25); text-align: center; font-size: 24px; margin: 30px 0px 30px;}
+.no-balance-text { display: inline-block;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400; line-height: 1.5; font-size: 16px; color: rgb(5, 15, 25); text-align: center; word-break: break-word; }
+.no-balance-wrapper { text-align: center; width: 250px; display: inline-block; margin-top: 7%; }
+.wallet-transaction{min-width: 150px;float: right;border: 1px solid #c6ddf1;padding: 14px;border-radius: 5px;margin: 15px 40px 0 0px; background-color: aliceblue; box-shadow: 0px 0px 15px 0px #d6e4ef;}
+.price{ font-size: 40px;display: block;width: 100%;text-align: right;}
+.price img{ width:25px;}
+.address, .hash{ font-size: 14px; text-align:left; font-weight: 300;padding: 5px 0;color: #6d6d6d;}
+.trans-date{ font-size: 12px; text-align:right; font-weight: 300;color: #848484;}
+.col-12{ width:100%; display: grid;}
+
+.loader-container {position:absolute;top: 50%;left: 50%;transform: translate(-50%, -50%)}

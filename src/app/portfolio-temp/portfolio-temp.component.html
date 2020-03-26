@@ -1,0 +1,95 @@
+<div class="cnt">
+  <div class="wrap">
+<div  class="main-container">
+  <div class="create-title">
+    Create new Portfolio
+  </div>
+  <div class="main-content"> 
+    <div class="choose-coin">
+      <div class="choose-coint-title">
+        Choose Coins
+      </div>
+      <div class="bit-coins-list-containe">
+        <div>
+          <div class="meme">
+              <div style="width:100%;">
+                <div class="name-oir">Name of Portfolio</div>
+                <input class="profoli-name" type="text" [(ngModel)] = "portfolioName" >
+              </div>
+          </div>
+          <div class="coin-width">
+            <div class="separatore-values">
+              <div> Bit Coins </div>
+              <div class="grey-color">{{bitCoinValue}}</div>
+            </div>
+            <div style="padding-bottom: 10px;">
+                <ng5-slider [(value)]="bitCoinValue" (valueChange)="valueChangebit($event)" [options]="options"></ng5-slider>
+            </div>
+          </div>
+          <div class="coin-width">
+              <div class="separatore-values">
+                <div> Ethuerum Coins </div>
+                <div class="grey-color">{{etheruemCoinValue}}</div>
+              </div>
+              <div style="padding-bottom: 10px;">
+                  <ng5-slider [(value)]="etheruemCoinValue" (valueChange)="valueChangeEther($event)" [options]="options"></ng5-slider>
+              </div>
+            </div>
+
+              <div class="aligin-center">
+                  <button routerLink="/portfolios" class="button-continue" (click)="createPortfolio();" >Confirm</button>
+              </div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-container">
+        <ngx-charts-advanced-pie-chart
+        [scheme]="colorScheme"
+        [view]=view
+        [(results)]="single"
+        [gradient]="gradient"
+        (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)"
+        >
+      </ngx-charts-advanced-pie-chart>
+
+      <div class="icons-col">
+        
+        <div class="displayflex" >
+          <div>
+              <img class="img-co" src="https://s3-skraps-bucket.sfo2.digitaloceanspaces.com/coin/8Sybs7UCa7xTXc0KnUhMYs6RD5nYuZjDje4e9UmX.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=FBY64PRA6UZMEZVJ5JZ5%2F20200325%2Fsfo2%2Fs3%2Faws4_request&X-Amz-Date=20200325T022226Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=13f7e365beb2edd4f20cba3e8d856c025885a2b8e8b5300f742e8b71117fc341">
+          </div>
+          <div class="coinDescription">
+            <div>
+              BitCoin
+            </div>
+            
+            <div >
+              {{bitCoinValue}}%
+            </div>
+          </div>
+        </div>
+        <div  class="displayflex" >
+          <div>
+              <img class="img-co" src="https://s3-skraps-bucket.sfo2.digitaloceanspaces.com/coin/CmCfwqS7a77oSXl6R2muSK2UPUYWLcGD2XmpgcrB.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=FBY64PRA6UZMEZVJ5JZ5%2F20200325%2Fsfo2%2Fs3%2Faws4_request&X-Amz-Date=20200325T022226Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c4273ab8b2aec97021171ae6976c30df6d5684083b15c58346f60d5ff93cd0fb">
+          </div>
+          <div class="coinDescription">
+            <div>
+              Ethereum
+            </div>
+            
+            <div >
+              {{etheruemCoinValue}}%
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+  </div>
+
+</div>
+  </div>
+
+</div>
