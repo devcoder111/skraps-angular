@@ -9,6 +9,7 @@ Run `npm run start-prod` for aot dev server and proxy AWS prod API, `npm run sta
 ## Build
 
 Run `npm run build-prod` to build (aot) the project. The build artifacts will be stored in the `dist/` directory.
+Be able to run 'ng serve --configuration=production' in order to use the production environment variables so that you can login with the test credentials 
 
 ## Further help
 
